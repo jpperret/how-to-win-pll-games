@@ -14259,19 +14259,55 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="How-to-Win-Premier-Lacrosse-League-Games">How to Win Premier Lacrosse League Games<a class="anchor-link" href="#How-to-Win-Premier-Lacrosse-League-Games">&#182;</a></h1><p>By John Perret</p>
+<h1 id="How-to-Win-Premier-Lacrosse-League-Games">How to Win Premier Lacrosse League Games<a class="anchor-link" href="#How-to-Win-Premier-Lacrosse-League-Games">&#182;</a></h1><p><strong>By John Perret</strong></p>
+<hr>
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>The <a href="https://premierlacrosseleague.com">Premier Lacrosse League (PLL)</a> is a relatively new professional sports league.
 In this project I'd like to see if there is a data science method to find out how to win Premier Lacrosse League Games.
-If we can find what wins games then teams can focus on that factor in practice to improve their record.</p>
-<p>There are only seven teams in the league and only two seasons have been played so far. Due to the lack teams and seasons, the dataset is very small compared to other sports however the processes used will scale when more data becomes avaliable</p>
+If we can find what wins games then teams can focus on that factor in practice to improve their record.
+Winning games is the main purpose of playing professional sports, so data science could help significantly.</p>
+<p>There are only seven teams in the league and only two seasons have been played so far. Due to the lack teams and seasons, the dataset is very small compared to other sports, however, the processes used will scale when more data becomes avaliable</p>
 <p>When looking for how to win games we want to focus on things that a team can change or improve on such as increasing shot percentage. 
-A team can not try to improve the year they are playing or their team name.</p>
+A team can not try to improve the year they are playing or their team name</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Data-Scrapping">Data Scrapping<a class="anchor-link" href="#Data-Scrapping">&#182;</a></h2><p>First we'll import all the libraries we'll need as well as initialize some constants that will be used throughout the rest of the tasks.</p>
+<table>
+<thead><tr>
+<th>Library</th>
+<th>Use (for this tutorial)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://pandas.pydata.org">Pandas</a></td>
+<td>Creating a table from html; storing and accessing data tables</td>
+</tr>
+<tr>
+<td><a href="https://numpy.org">Numpy</a></td>
+<td>General data manipulation; linear regression model creation</td>
+</tr>
+<tr>
+<td><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.html#module-matplotlib.pyplot">Matplotlib.Pyplot</a></td>
+<td>Displaying various graphs/plots. A different library could be used, but I am most comfortable with this one for graping.</td>
+</tr>
+<tr>
+<td><a href="https://pypi.org/project/requests/">Requests</a></td>
+<td>Collecting raw html data from statscrew</td>
+</tr>
+<tr>
+<td><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">bs4 BeautifulSoup</a></td>
+<td>cleaning up html data</td>
+</tr>
+<tr>
+<td><a href="https://scikit-learn.org/stable/modules/linear_model.html">sklearn.linear_model</a></td>
+<td>creating linear regrssion models</td>
+</tr>
+</tbody>
+</table>
+<p>A quick note on numpy vs sklearn for linear regression models: I could've opted to use only one, but for soley style reasons I prefer <code>numpy</code> when I intend to plot the regression and <code>sklearn.linear_model</code> for printing out the model in english. Either library could bne used instead of the other</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -14285,7 +14321,7 @@ A team can not try to improve the year they are playing or their team name.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">requests</span> <span class="k">as</span> <span class="nn">req</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">linear_model</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 </pre></div>
 
      </div>
@@ -14300,9 +14336,14 @@ A team can not try to improve the year they are playing or their team name.</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># initialize some constants</span>
-<span class="n">team_colors</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Archers LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#224279&quot;</span><span class="p">,</span> <span class="s2">&quot;Atlas LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#0ea2c0&quot;</span><span class="p">,</span> <span class="s2">&quot;Chaos LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#ed4849&quot;</span><span class="p">,</span> <span class="s2">&quot;Chrome LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#f3609e&quot;</span><span class="p">,</span> <span class="s2">&quot;Redwoods LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#483633&quot;</span><span class="p">,</span> <span class="s2">&quot;Waterdogs LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#978cd8&quot;</span><span class="p">,</span> <span class="s2">&quot;Whipsnakes LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#58c4b2&quot;</span><span class="p">}</span>
+
+<span class="c1"># Used when creating graph titles or printing a linear regression model</span>
 <span class="n">column_labels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PIM&#39;</span> <span class="p">:</span> <span class="s1">&#39;Penalties in minutes&#39;</span><span class="p">,</span> <span class="s1">&#39;Shts&#39;</span><span class="p">:</span> <span class="s2">&quot;shots&quot;</span><span class="p">,</span> <span class="s1">&#39;SOG&#39;</span><span class="p">:</span> <span class="s1">&#39;Shots on goal&#39;</span><span class="p">,</span> <span class="s1">&#39;S%&#39;</span><span class="p">:</span> <span class="s2">&quot;Shooting Percentage&quot;</span><span class="p">,</span> <span class="s1">&#39;SG%&#39;</span><span class="p">:</span> <span class="s2">&quot;Shots on goal percentage&quot;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">:</span> <span class="s2">&quot;Ground Balls&quot;</span><span class="p">,</span> <span class="s1">&#39;TOC&#39;</span><span class="p">:</span> <span class="s2">&quot;Turn overs committed&quot;</span><span class="p">,</span> <span class="s1">&#39;CTO&#39;</span><span class="p">:</span> <span class="s2">&quot;Caused Turn overs&quot;</span><span class="p">,</span> <span class="s1">&#39;FO%&#39;</span><span class="p">:</span> <span class="s2">&quot;Face off Percentage&quot;</span><span class="p">}</span>
+
+<span class="c1"># Whenever iterating over all seasons, will ease updates when more seasons are available.</span>
 <span class="n">SEASONS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span> <span class="c1"># as more seasons are held add to the list</span>
+
+<span class="c1"># When printing a float, how many decimals to include</span>
 <span class="n">DECIMALS_PRINT</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># When printing linear regressions, how many decimals</span>
 </pre></div>
 
@@ -14331,7 +14372,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># teams_dic converts team names into the url extension to get data on the team</span>
 <span class="n">teams_dic</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Archers LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLARC&quot;</span><span class="p">,</span> <span class="s2">&quot;Atlas LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLATL&quot;</span><span class="p">,</span> <span class="s2">&quot;Chaos LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLCHA&quot;</span><span class="p">,</span> <span class="s2">&quot;Chrome LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLCHR&quot;</span><span class="p">,</span> <span class="s2">&quot;Redwoods LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLRED&quot;</span><span class="p">,</span> <span class="s2">&quot;Waterdogs LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLWAT&quot;</span><span class="p">,</span> <span class="s2">&quot;Whipsnakes LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;t-PLLWHI&quot;</span><span class="p">}</span>
 
-<span class="n">players_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span> <span class="c1"># dataframe for scoring data</span>
+<span class="n">players_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span> <span class="c1"># dataframe for players data</span>
 
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">SEASONS</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">team_name</span> <span class="ow">in</span> <span class="n">teams_dic</span><span class="p">:</span>
@@ -14691,7 +14732,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Columns explained. This is additional data on the html page for each team. I decided it was easier to copy all the column titles by hand rather than scrape them</p>
+<p>This is additional data on the html page for each team. I decided it was easier to copy all the column titles by hand rather than write code to scrape them</p>
 <table>
 <thead><tr>
 <th>Column Title</th>
@@ -14721,7 +14762,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </tr>
 <tr>
 <td>Pts</td>
-<td>Points: goals + assists</td>
+<td>Points = goals + assists</td>
 </tr>
 <tr>
 <td>PIM</td>
@@ -14784,7 +14825,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <td>Team</td>
 </tr>
 <tr>
-<td>year</td>
+<td>Year</td>
 <td>Year</td>
 </tr>
 </tbody>
@@ -14794,7 +14835,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Next we will collecting the regular season standings. Similar to the player's data the season data is on a different page for each year. The 2020 season can be found <a href="https://www.statscrew.com/lacrosse/standings/l-PLL/y-2020">here</a>.</p>
+<p>Next we will collecting the regular season standings. Similar to the player's data the season data is on a different page for each year. The 2020 season as an example can be found <a href="https://www.statscrew.com/lacrosse/standings/l-PLL/y-2020">here</a>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14812,7 +14853,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
     <span class="c1"># get the first table on the page</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
     
-    <span class="n">s</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span> <span class="c1"># initialize year</span>
+    <span class="n">s</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span> <span class="c1"># add year column</span>
     
     <span class="c1"># For some reason the standings page has 2 empty columns at the end of each year&#39;s standings table</span>
     <span class="n">s</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 5&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -14999,7 +15040,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Similar to the scoring data I decided it would be easier to copy column title explanations by hand</p>
+<p>Similar to the players data I decided it would be easier to copy column title explanations by hand</p>
 <table>
 <thead><tr>
 <th>Column Title</th>
@@ -15028,7 +15069,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <td>Goals Against</td>
 </tr>
 <tr>
-<td>year</td>
+<td>Year</td>
 <td>Year</td>
 </tr>
 </tbody>
@@ -15039,7 +15080,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Data-Tidying">Data Tidying<a class="anchor-link" href="#Data-Tidying">&#182;</a></h2><p>Here we'll do some minor cleanup on the data to make analysis easier later.</p>
-<p>To start we'll normalize the data. Since a different number of games were played each season, total goals and number of wins are on a different scale. To combat this we'll use <em>average</em> goals per game and winning <em>percentage</em> in our analysis.</p>
+<p>To start we'll normalize the data. Since a different number of games were played each season, total goals and number of wins are on a different scale for each season. To combat this we'll use <em>average</em> goals per game and winning <em>percentage</em> in our analysis.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15050,11 +15091,13 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">games_played</span> <span class="o">=</span> <span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">W</span><span class="o">+</span><span class="n">teams_df</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
 <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;games_played&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">games_played</span>
+
 <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span>
 <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;avg_gf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;GF&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span>
 <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;avg_ga&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;GA&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span>
 
-<span class="c1"># avoid confusion w number of wins and win percentage. Win and loss counts won&#39;t be used.</span>
+<span class="c1"># To avoid confusion between number of wins and win percentage drop wins and losses columns</span>
+<span class="c1"># Win and loss counts won&#39;t be used.</span>
 <span class="n">teams_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">teams_df</span>
@@ -15264,8 +15307,8 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>From the pages where we scrapped the data I noticed that each table has a <code>'Totals'</code> column that pandas grabbed with all the data for each player. 
-This could be helpful to add the totals rows to the teams table so that we can access the win percentage as well as the sum of all other parameters.</p>
+<p>From the pages where we scrapped the player data I noticed that each table has a <code>'Totals'</code> column that pandas grabbed with all the data for each player. 
+It could be helpful to add the totals rows to the teams table so that we can access the win percentage as well as the sum of all other parameters for each team and season.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15682,19 +15725,22 @@ This could be helpful to add the totals rows to the teams table so that we can a
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>There is some missing data in our dataframes. There are certain statistics that were not recorded during the first season of play such as penalties in minutes. 
+<h2 id="Handling-Missing-Data">Handling Missing Data<a class="anchor-link" href="#Handling-Missing-Data">&#182;</a></h2><p>There is some missing data in our tables. 
+There are certain statistics that were not recorded during the first season of play such as penalties in minutes. 
 The Nan's in the dataframe will be okay in further analysis since we know they mean that the data is missing.</p>
 <p>Optionally we could've replaced np.nan with pd.na to clarrify that the data is missing and not "not a number", however, for this excersise we know that np.nan represents a missing value.</p>
-<p>We wont try to fill in missing data because it is most likely missing soley beacuse nobody thought to record it at the time, not due to a factor in the data itself. Additionally we do not need a data point for every row of every column to perform our analysis.</p>
+<p>We wont try to fill in missing data since it is most likely missing soley beacuse nobody thought to record it at the time, not due to a factor in the data itself. 
+Additionally we do not need a data point for every row of every column to perform our analysis, so there is no reason to drop rows/columns or try to fill in data.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Inital-Exploration:-Are-goals-for-or-goals-against-more-relevant-to-wins?">Inital Exploration: Are goals for or goals against more relevant to wins?<a class="anchor-link" href="#Inital-Exploration:-Are-goals-for-or-goals-against-more-relevant-to-wins?">&#182;</a></h2><p>To start let's do some simple analysis and determine if scoring goals or stopping goals is more important to winning games. 
-For this exploration lets first graph the data.</p>
-<p>Ideally when graphing features of a model we create an axis for each feature. Due to the minimal amount of data avaliable I didn't think the 3D graph was very easy to interpret so I also included a 2D graph.</p>
-<p>There is not a lot of points to show a clear linear relationship, but we can assume one.</p>
+For this exploration lets first graph the data to get an idea of what it looks like.</p>
+<p>Ideally when graphing features of a model we create an axis for each feature. 
+Due to the minimal amount of data avaliable I didn't think the 3D graph is very easy to interpret so I also included a 2D graph.</p>
+<p>The 3D graph will be useful when there is more datapoints and in a format where the axes can be rotated to view at a different angle.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15798,7 +15844,8 @@ For this exploration lets first graph the data.</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Now lets perform a linear regression for number of wins from goals for and goals against</p>
+<p>There is not a lot of points to show a clear linear relationship, but we can assume one.</p>
+<p>Since we're assuming a linear relationship, lets perform a linear regression for number of wins from goals for and goals against.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15847,17 +15894,17 @@ For this exploration lets first graph the data.</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>By this analysis scoring goals is more important than stopping goals. Each goal scored will have a greater impact on the number of wins than each goal scored against. This is not a definite fact, but a conclusion from our data.</p>
+<p>By this analysis scoring goals is more important than stopping goals. In other words each goal scored will have a greater impact on the number of wins than each goal scored against. This is not a definite fact, but a conclusion from our data.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Since we believe scoring goals to be more important than stopping goals, lets continue our analysis to determine what is the most important statistic for scoring goals.</p>
-<p>For this analysis we'll use more of the columns in the table.
-We won't use all of the columns in the scoring dataframe because there are certain things we cannot change. For example, we won't use the position column because we can't have 10 midfielders on the feild at once even if they're the most likely to be scoring goals.</p>
-<p>I will also ignore columns that are dependent on goals. Assists, power play goals and short hand goals do not cause goals but are a result of goals. Further analysis could compare the effect of assists on shooting percentage.</p>
-<p>A list of the columns being used are as follows:</p>
+<h2 id="What-factors-lead-to-more-goals-scored?">What factors lead to more goals scored?<a class="anchor-link" href="#What-factors-lead-to-more-goals-scored?">&#182;</a></h2><p>Since we believe scoring goals to be more important than stopping goals, lets continue our analysis by determining what the most important statistic is for scoring goals.</p>
+<p>For this analysis we'll use more of the columns in the players table.
+We won't use all of the columns in the players dataframe because there are certain things we cannot change. For example, we won't use the position column because we can't have 10 midfielders on the feild at once even if they're the most likely position to be scoring goals.</p>
+<p>I will also ignore columns that are dependent on goals. Assists, power play goals and short hand goals do not cause goals but are a result of goals. Assists could potential be explored in further analysis by looking at the effect of assists on shooting percentage.</p>
+<p>A list of the columns being used is in the code below</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15886,13 +15933,14 @@ We won't use all of the columns in the scoring dataframe because there are certa
                     <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;games_played&#39;</span><span class="p">])</span> <span class="c1"># y data</span>
 
 <span class="c1"># plot graphs and linear regressions       </span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>            
+<span class="n">figure_num</span> <span class="o">=</span> <span class="mi">1</span>            
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">shots_regr_cols</span><span class="p">:</span> 
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figure_num</span><span class="p">)</span>
     
     <span class="n">x</span> <span class="o">=</span> <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
     
+    <span class="c1"># create and plot linear regression for each facter</span>
     <span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
 
@@ -15902,7 +15950,7 @@ We won't use all of the columns in the scoring dataframe because there are certa
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">column_labels</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Avg. Goals Per Game&quot;</span><span class="p">)</span>
     
-    <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+    <span class="n">figure_num</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 
      </div>
@@ -16073,8 +16121,10 @@ We won't use all of the columns in the scoring dataframe because there are certa
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="More-complicated-linear-regression">More complicated linear regression<a class="anchor-link" href="#More-complicated-linear-regression">&#182;</a></h2><p>Although looking at what factors lead to scoring more goals what we really want to do is figure out what factors lead to a higher win percentage.
+<h2 id="More-complicated-linear-regression">More complicated linear regression<a class="anchor-link" href="#More-complicated-linear-regression">&#182;</a></h2><p>We could continue looking into what factors help teams score goals, but what we really want to do is figure out what factors lead to a higher win percentage.
 To do this we'll create a linear regression where the features are all the columns used above in our features vs avg goals regressions.</p>
+<p>Again the relationship might not actually be linear, but to keep the model simple and interpretable we will assume a linear relationship.</p>
+<p>We could use a more complicated method of machine learning, however, then it might become a blackbox and we might have trouble interpreting what the model actually learned.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -16124,8 +16174,8 @@ To do this we'll create a linear regression where the features are all the colum
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The regression is hard to interpret since there is not a standard range. For example, 1 penalty minute has a bigger impact on win percentage than 1 shot.</p>
-<p>There are some unexpected results in our model. According to the model shots on goal hurt win percentage, but turn overs committed increases winning percentage. 
+<p>The regression is hard to interpret since there is not a standard range. For example, 1 penalty minute has a bigger impact on win percentage than 1 shot. Therefore it is difficult to make direct comparisons.</p>
+<p>There are some unexpected results in our model. According to the model, shots on goal hurt win percentage, but turn overs committed increases winning percentage. 
 These numbers seem counterintuitive. Especially shots on goal since you can't score a goal without a shot on goal and you can't win games without goals.
 There could of course be a logical explanation for these oddities, but I would be curious to see if they persist when more data becomes avaliable.</p>
 
@@ -16142,10 +16192,15 @@ There could of course be a logical explanation for these oddities, but I would b
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_wins_regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">teams_df</span><span class="p">[</span><span class="n">shots_regr_cols</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate residuals</span>
+<span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_wins_regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">teams_df</span><span class="p">[</span><span class="n">shots_regr_cols</span><span class="p">])</span>
+
+<span class="c1"># plot residuals in a violin plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">([</span><span class="n">teams_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">SEASONS</span><span class="p">],</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">SEASONS</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">SEASONS</span><span class="p">)</span> <span class="c1"># adds years at the correct place on x-axis</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Win Percentage Residuals&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">SEASONS</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -16168,7 +16223,7 @@ There could of course be a logical explanation for these oddities, but I would b
 
 
 <div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -16182,12 +16237,15 @@ There could of course be a logical explanation for these oddities, but I would b
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>While we were able to make conclusions and predictions about what factors lead to teams winning more games I don't believe that any are statistically significant due to the lack of data.
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>While we were able to make conclusions and predictions about what factors lead to teams winning more games I don't believe that any conclusions are statistically significant due to the lack of data.
 The graphs of the residuals do not show a normal curve that is expected for a good regression model.
 Additionally, there were some oddities in the regression model that are most easily explained by a lack of data to train the model.</p>
 <p>With this conclusion, I do not claim that the model is wrong but that it doesn't have enough data to prove that it is correct.</p>
-<p>After the season this summer there will be more data on the league and we can improve our models. Since the scrapping we did is in loops and not by hand adding another season and an 8th team to our model should be as simple as adding them to the list of constants at the beginning.</p>
-<p>In future work, I think it would be interesting to compare players and see if there is a data science method to determine which players help win the most games (something similar to Moneyball but for lacrosse). Additionally looking into different types of plays could be beneficial. Example analysis could compare assisted vs unassisted goals, aggressive vs conservative defense, the use of <a href="https://www.rookieroad.com/lacrosse/what-is-the-fogo-lacrosse-player-position/">FOGO</a>'s, etc.</p>
+<p>After the season this summer there will be more data on the league and we can improve our models. 
+Since the scrapping we did is in loops and not by hand, adding another season and an 8th team to our model should be as simple as adding them to the list of constants at the beginning.</p>
+<p>In future work, I think it would be interesting to compare players and see if there is a data science method to determine which players help win the most games (something similar to Moneyball but for lacrosse). 
+Additionally, looking into different types of plays could be beneficial. 
+For example, future analysis could compare assisted vs unassisted goals, aggressive vs conservative defense, the use of <a href="https://www.rookieroad.com/lacrosse/what-is-the-fogo-lacrosse-player-position/">FOGO</a>'s, etc.</p>
 <p>For more information on the Premier Lacrosse League, you can go to <a href="https://stats.premierlacrosseleague.com">https://stats.premierlacrosseleague.com</a> or their main website <a href="https://premierlacrosseleague.com">https://premierlacrosseleague.com</a>. Again all the data I used was scraped from <a href="https://www.statscrew.com">https://www.statscrew.com</a> if you would like to use their data for your own analysis.</p>
 <p>Thank you for following along with my analysis of how to win premier lacrosse league games. Whether or not you like lacrosse, I hope the idea of the upcoming season gets you excited thinking about all the additional data that will be available.</p>
 
