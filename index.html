@@ -14256,211 +14256,18 @@ a.anchor-link {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLWHI/y-2020&quot;)</span>
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">#print(soup.prettify())</span>
-<span class="sd">whipsnakes20_dfs = pd.read_html(soup.prettify())</span>
-<span class="sd">whipsnakes20_scoring_df = whipsnakes_dfs[0]</span>
-<span class="sd">whipsnakes20_scoring_df[&#39;Team&#39;] = &#39;whipsnakes&#39;</span>
 
-
-<span class="sd">whipsnakes20_goalkeep_df = whipsnakes_dfs[1]</span>
-<span class="sd">display(whipsnakes_scoring_df)</span>
-
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLWAT/y-2020&quot;)</span>
-<span class="sd">team = &quot;waterdogs&quot;</span>
-
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">#print(soup.prettify())</span>
-<span class="sd">waterdogs20_dfs = pd.read_html(soup.prettify())</span>
-
-<span class="sd">waterdogs20_scoring_df = waterdogs20_dfs[0]</span>
-<span class="sd">waterdogs20_scoring_df[&#39;Team&#39;] = team</span>
-
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLRED/y-2020&quot;)</span>
-<span class="sd">team = &quot;redwoods&quot;</span>
-
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">#print(soup.prettify())</span>
-<span class="sd">redwoods20_dfs = pd.read_html(soup.prettify())</span>
-
-<span class="sd">redwoods20_scoring_df = redwoods20_dfs[0]</span>
-<span class="sd">redwoods20_scoring_df[&#39;Team&#39;] = team</span>
-
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLCHR/y-2020&quot;)</span>
-<span class="sd">team = &quot;chrome&quot;</span>
-
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">#print(soup.prettify())</span>
-<span class="sd">chrome20_dfs = pd.read_html(soup.prettify())</span>
-
-<span class="sd">chrome20_scoring_df = chrome20_dfs[0]</span>
-<span class="sd">chrome20_scoring_df[&#39;Team&#39;] = team</span>
-
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLCHA/y-2020&quot;)</span>
-<span class="sd">team = &quot;chaos&quot;</span>
-
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">#print(soup.prettify())</span>
-<span class="sd">chaos20_dfs = pd.read_html(soup.prettify())</span>
-
-<span class="sd">chaos20_scoring_df = chaos20_dfs[0]</span>
-<span class="sd">chaos20_scoring_df[&#39;Team&#39;] = team</span>
-
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLATL/y-2020&quot;)</span>
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">atlas20_dfs = pd.read_html(soup.prettify())</span>
-<span class="sd">atlas20_scoring_df = atlas20_dfs[0]</span>
-<span class="sd">atlas20_scoring_df[&#39;Team&#39;] = &quot;atlas&quot;</span>
-
-<span class="sd">r = req.get(&quot;https://www.statscrew.com/lacrosse/stats/t-PLLARC/y-2020&quot;)</span>
-<span class="sd">soup = BeautifulSoup(r.content, &#39;html.parser&#39;)</span>
-<span class="sd">archers20_dfs = pd.read_html(soup.prettify())</span>
-<span class="sd">archers20_scoring_df = archers20_dfs[0]</span>
-<span class="sd">archers20_scoring_df[&#39;Team&#39;] = &quot;archers&quot;&#39;&#39;&#39;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLWHI/y-2020&#34;)\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\n#print(soup.prettify())\nwhipsnakes20_dfs = pd.read_html(soup.prettify())\nwhipsnakes20_scoring_df = whipsnakes_dfs[0]\nwhipsnakes20_scoring_df[\&#39;Team\&#39;] = \&#39;whipsnakes\&#39;\n\n\nwhipsnakes20_goalkeep_df = whipsnakes_dfs[1]\ndisplay(whipsnakes_scoring_df)\n\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLWAT/y-2020&#34;)\nteam = &#34;waterdogs&#34;\n\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\n#print(soup.prettify())\nwaterdogs20_dfs = pd.read_html(soup.prettify())\n\nwaterdogs20_scoring_df = waterdogs20_dfs[0]\nwaterdogs20_scoring_df[\&#39;Team\&#39;] = team\n\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLRED/y-2020&#34;)\nteam = &#34;redwoods&#34;\n\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\n#print(soup.prettify())\nredwoods20_dfs = pd.read_html(soup.prettify())\n\nredwoods20_scoring_df = redwoods20_dfs[0]\nredwoods20_scoring_df[\&#39;Team\&#39;] = team\n\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLCHR/y-2020&#34;)\nteam = &#34;chrome&#34;\n\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\n#print(soup.prettify())\nchrome20_dfs = pd.read_html(soup.prettify())\n\nchrome20_scoring_df = chrome20_dfs[0]\nchrome20_scoring_df[\&#39;Team\&#39;] = team\n\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLCHA/y-2020&#34;)\nteam = &#34;chaos&#34;\n\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\n#print(soup.prettify())\nchaos20_dfs = pd.read_html(soup.prettify())\n\nchaos20_scoring_df = chaos20_dfs[0]\nchaos20_scoring_df[\&#39;Team\&#39;] = team\n\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLATL/y-2020&#34;)\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\natlas20_dfs = pd.read_html(soup.prettify())\natlas20_scoring_df = atlas20_dfs[0]\natlas20_scoring_df[\&#39;Team\&#39;] = &#34;atlas&#34;\n\nr = req.get(&#34;https://www.statscrew.com/lacrosse/stats/t-PLLARC/y-2020&#34;)\nsoup = BeautifulSoup(r.content, \&#39;html.parser\&#39;)\narchers20_dfs = pd.read_html(soup.prettify())\narchers20_scoring_df = archers20_dfs[0]\narchers20_scoring_df[\&#39;Team\&#39;] = &#34;archers&#34;&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="How-to-Win-Premier-Lacrosse-League-Games">How to Win Premier Lacrosse League Games<a class="anchor-link" href="#How-to-Win-Premier-Lacrosse-League-Games">&#182;</a></h1><p>By John Perret</p>
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>The premier lacrosse league is a relatively new professional sports league. The Whipsnakes Lacrosse Club has won the championship both seasons. I'd like to see if there is a data science method to find out how they score goals stop the other team from scoring and then win games.</p>
-<p>There are only seven teams and two seasons, so the dataset is very small compared to other sports however the processes used will scale when more data becomes avaliable</p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>The <a href="https://premierlacrosseleague.com">Premier Lacrosse League (PLL)</a> is a relatively new professional sports league.
+In this project I'd like to see if there is a data science method to find out how to win Premier Lacrosse League Games.
+If we can find what wins games then teams can focus on that factor in practice to improve their record.</p>
+<p>There are only seven teams in the league and only two seasons have been played so far. Due to the lack teams and seasons, the dataset is very small compared to other sports however the processes used will scale when more data becomes avaliable</p>
+<p>When looking for how to win games we want to focus on things that a team can change or improve on such as increasing shot percentage. 
+A team can not try to improve the year they are playing or their team name.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14470,7 +14277,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -14489,14 +14296,14 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># initialize some constants</span>
 <span class="n">team_colors</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Archers LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#224279&quot;</span><span class="p">,</span> <span class="s2">&quot;Atlas LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#0ea2c0&quot;</span><span class="p">,</span> <span class="s2">&quot;Chaos LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#ed4849&quot;</span><span class="p">,</span> <span class="s2">&quot;Chrome LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#f3609e&quot;</span><span class="p">,</span> <span class="s2">&quot;Redwoods LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#483633&quot;</span><span class="p">,</span> <span class="s2">&quot;Waterdogs LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#978cd8&quot;</span><span class="p">,</span> <span class="s2">&quot;Whipsnakes LC&quot;</span> <span class="p">:</span> <span class="s2">&quot;#58c4b2&quot;</span><span class="p">}</span>
 <span class="n">column_labels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;PIM&#39;</span> <span class="p">:</span> <span class="s1">&#39;Penalties in minutes&#39;</span><span class="p">,</span> <span class="s1">&#39;Shts&#39;</span><span class="p">:</span> <span class="s2">&quot;shots&quot;</span><span class="p">,</span> <span class="s1">&#39;SOG&#39;</span><span class="p">:</span> <span class="s1">&#39;Shots on goal&#39;</span><span class="p">,</span> <span class="s1">&#39;S%&#39;</span><span class="p">:</span> <span class="s2">&quot;Shooting Percentage&quot;</span><span class="p">,</span> <span class="s1">&#39;SG%&#39;</span><span class="p">:</span> <span class="s2">&quot;Shots on goal percentage&quot;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">:</span> <span class="s2">&quot;Ground Balls&quot;</span><span class="p">,</span> <span class="s1">&#39;TOC&#39;</span><span class="p">:</span> <span class="s2">&quot;Turn overs committed&quot;</span><span class="p">,</span> <span class="s1">&#39;CTO&#39;</span><span class="p">:</span> <span class="s2">&quot;Caused Turn overs&quot;</span><span class="p">,</span> <span class="s1">&#39;FO%&#39;</span><span class="p">:</span> <span class="s2">&quot;Face off Percentage&quot;</span><span class="p">}</span>
 <span class="n">SEASONS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">2020</span><span class="p">]</span> <span class="c1"># as more seasons are held add to the list</span>
-<span class="n">DECIMALS_PRINT</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">DECIMALS_PRINT</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># When printing linear regressions, how many decimals</span>
 </pre></div>
 
      </div>
@@ -14507,17 +14314,18 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Source">Source<a class="anchor-link" href="#Source">&#182;</a></h2><p>There are multiple pages that data is being scrapped from. They are all from <a href="https://www.statscrew.com/lacrosse/l-PLL/y-2020">statscrews.com 2020 Premier Lacrosse League Data</a>.</p>
-<p>Stats crew contains data for many different professional sports leagues for different sports.</p>
-<p>First we will gather data on all the players in all the season. This requires going to each team's page for each season and scraping the table on the page. 
+<h3 id="Source">Source<a class="anchor-link" href="#Source">&#182;</a></h3><p>There are multiple pages that data is being scrapped from. They are all from <a href="https://www.statscrew.com/lacrosse/l-PLL/y-2020">statscrews.com 2020 Premier Lacrosse League Data</a>.</p>
+<p><a href="https://www.statscrew.com">Statscrew.com</a> contains data for many different professional sports leagues and sports.</p>
+<p>First we will gather data on all the players in all the season. 
+This requires going to each team's page for each season and scraping the table on the page. 
 Luckily pandas has a function that we can use for scrapping an html table</p>
-<p>Since we can select all values in the dataframe by the team column there is no need to save dataframes for each team.</p>
+<p>To differentiate between different teams and seasons we will add a column for each to the dataframe so that we can select the data for a relavant team and or year.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># teams_dic converts team names into the url extension to get data on the team</span>
@@ -14527,11 +14335,18 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">SEASONS</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">team_name</span> <span class="ow">in</span> <span class="n">teams_dic</span><span class="p">:</span>
+        <span class="c1"># scrape html</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://www.statscrew.com/lacrosse/stats/</span><span class="si">{</span><span class="n">teams_dic</span><span class="p">[</span><span class="n">team_name</span><span class="p">]</span><span class="si">}</span><span class="s2">/y-</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># import the first table from the html (second table is goalies)</span>
         <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># add the year and team columns</span>
         <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">team_name</span>
         <span class="n">new_df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span>
+        
+        <span class="c1"># add to the players df</span>
         <span class="n">players_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">players_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">],</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">players_df</span>
@@ -14550,7 +14365,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 
 
 
@@ -14979,30 +14794,33 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Next we will collecting the regular season standings. The 2020 season for example can be found <a href="https://www.statscrew.com/lacrosse/standings/l-PLL/y-2020">here</a>.</p>
+<p>Next we will collecting the regular season standings. Similar to the player's data the season data is on a different page for each year. The 2020 season can be found <a href="https://www.statscrew.com/lacrosse/standings/l-PLL/y-2020">here</a>.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">standings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teams_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span> <span class="c1"># empty dataframe to add to</span>
+
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">SEASONS</span><span class="p">:</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://www.statscrew.com/lacrosse/standings/l-PLL/y-</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># get the first table on the page</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">prettify</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">s</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span>
+    
+    <span class="n">s</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year</span> <span class="c1"># initialize year</span>
+    
+    <span class="c1"># For some reason the standings page has 2 empty columns at the end of each year&#39;s standings table</span>
     <span class="n">s</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 5&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 6&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">standings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">standings</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">standings</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">standings</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">standings</span><span class="o">.</span><span class="n">W</span><span class="o">+</span><span class="n">standings</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
-<span class="n">standings</span><span class="p">[</span><span class="s1">&#39;avg_gf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">standings</span><span class="p">[</span><span class="s1">&#39;GF&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">standings</span><span class="o">.</span><span class="n">W</span><span class="o">+</span><span class="n">standings</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
-<span class="n">standings</span><span class="p">[</span><span class="s1">&#39;avg_ga&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">standings</span><span class="p">[</span><span class="s1">&#39;GA&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">standings</span><span class="o">.</span><span class="n">W</span><span class="o">+</span><span class="n">standings</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
-
-<span class="n">standings</span>
+    
+    <span class="c1"># add to standings df</span>
+    <span class="n">teams_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">teams_df</span><span class="p">,</span> <span class="n">s</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">teams_df</span>
 </pre></div>
 
      </div>
@@ -15018,7 +14836,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
 
 
@@ -15047,9 +14865,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <th>GF</th>
       <th>GA</th>
       <th>Year</th>
-      <th>win_pct</th>
-      <th>avg_gf</th>
-      <th>avg_ga</th>
     </tr>
   </thead>
   <tbody>
@@ -15061,9 +14876,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>118</td>
       <td>126</td>
       <td>2019</td>
-      <td>0.700000</td>
-      <td>11.800000</td>
-      <td>12.600000</td>
     </tr>
     <tr>
       <th>1</th>
@@ -15073,9 +14885,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>116</td>
       <td>109</td>
       <td>2019</td>
-      <td>0.600000</td>
-      <td>11.600000</td>
-      <td>10.900000</td>
     </tr>
     <tr>
       <th>2</th>
@@ -15085,9 +14894,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>105</td>
       <td>100</td>
       <td>2019</td>
-      <td>0.500000</td>
-      <td>10.500000</td>
-      <td>10.000000</td>
     </tr>
     <tr>
       <th>3</th>
@@ -15097,9 +14903,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>112</td>
       <td>106</td>
       <td>2019</td>
-      <td>0.500000</td>
-      <td>11.200000</td>
-      <td>10.600000</td>
     </tr>
     <tr>
       <th>4</th>
@@ -15109,9 +14912,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>117</td>
       <td>122</td>
       <td>2019</td>
-      <td>0.500000</td>
-      <td>11.700000</td>
-      <td>12.200000</td>
     </tr>
     <tr>
       <th>5</th>
@@ -15121,9 +14921,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>120</td>
       <td>125</td>
       <td>2019</td>
-      <td>0.200000</td>
-      <td>12.000000</td>
-      <td>12.500000</td>
     </tr>
     <tr>
       <th>6</th>
@@ -15133,9 +14930,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>82</td>
       <td>51</td>
       <td>2020</td>
-      <td>1.000000</td>
-      <td>13.666667</td>
-      <td>8.500000</td>
     </tr>
     <tr>
       <th>7</th>
@@ -15145,9 +14939,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>64</td>
       <td>68</td>
       <td>2020</td>
-      <td>0.666667</td>
-      <td>10.666667</td>
-      <td>11.333333</td>
     </tr>
     <tr>
       <th>8</th>
@@ -15157,9 +14948,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>64</td>
       <td>64</td>
       <td>2020</td>
-      <td>0.600000</td>
-      <td>12.800000</td>
-      <td>12.800000</td>
     </tr>
     <tr>
       <th>9</th>
@@ -15169,9 +14957,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>62</td>
       <td>63</td>
       <td>2020</td>
-      <td>0.500000</td>
-      <td>10.333333</td>
-      <td>10.500000</td>
     </tr>
     <tr>
       <th>10</th>
@@ -15181,9 +14966,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>70</td>
       <td>78</td>
       <td>2020</td>
-      <td>0.285714</td>
-      <td>10.000000</td>
-      <td>11.142857</td>
     </tr>
     <tr>
       <th>11</th>
@@ -15193,9 +14975,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>47</td>
       <td>53</td>
       <td>2020</td>
-      <td>0.200000</td>
-      <td>9.400000</td>
-      <td>10.600000</td>
     </tr>
     <tr>
       <th>12</th>
@@ -15205,9 +14984,6 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
       <td>46</td>
       <td>58</td>
       <td>2020</td>
-      <td>0.200000</td>
-      <td>9.200000</td>
-      <td>11.600000</td>
     </tr>
   </tbody>
 </table>
@@ -15259,18 +15035,261 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </table>
 
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Data-Tidying">Data Tidying<a class="anchor-link" href="#Data-Tidying">&#182;</a></h2><p>Here we'll do some minor cleanup on the data to make analysis easier later.</p>
+<p>To start we'll normalize the data. Since a different number of games were played each season, total goals and number of wins are on a different scale. To combat this we'll use <em>average</em> goals per game and winning <em>percentage</em> in our analysis.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">games_played</span> <span class="o">=</span> <span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">W</span><span class="o">+</span><span class="n">teams_df</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
+<span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;games_played&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">games_played</span>
+<span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span>
+<span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;avg_gf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;GF&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span>
+<span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;avg_ga&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;GA&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span>
+
+<span class="c1"># avoid confusion w number of wins and win percentage. Win and loss counts won&#39;t be used.</span>
+<span class="n">teams_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">teams_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Team</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>Year</th>
+      <th>games_played</th>
+      <th>win_pct</th>
+      <th>avg_gf</th>
+      <th>avg_ga</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Chaos LC</td>
+      <td>118</td>
+      <td>126</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.700000</td>
+      <td>11.800000</td>
+      <td>12.600000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Whipsnakes LC</td>
+      <td>116</td>
+      <td>109</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.600000</td>
+      <td>11.600000</td>
+      <td>10.900000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Archers LC</td>
+      <td>105</td>
+      <td>100</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.500000</td>
+      <td>10.500000</td>
+      <td>10.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Redwoods LC</td>
+      <td>112</td>
+      <td>106</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.500000</td>
+      <td>11.200000</td>
+      <td>10.600000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Atlas LC</td>
+      <td>117</td>
+      <td>122</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.500000</td>
+      <td>11.700000</td>
+      <td>12.200000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Chrome LC</td>
+      <td>120</td>
+      <td>125</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.200000</td>
+      <td>12.000000</td>
+      <td>12.500000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Whipsnakes LC</td>
+      <td>82</td>
+      <td>51</td>
+      <td>2020</td>
+      <td>6</td>
+      <td>1.000000</td>
+      <td>13.666667</td>
+      <td>8.500000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Archers LC</td>
+      <td>64</td>
+      <td>68</td>
+      <td>2020</td>
+      <td>6</td>
+      <td>0.666667</td>
+      <td>10.666667</td>
+      <td>11.333333</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Chrome LC</td>
+      <td>64</td>
+      <td>64</td>
+      <td>2020</td>
+      <td>5</td>
+      <td>0.600000</td>
+      <td>12.800000</td>
+      <td>12.800000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Redwoods LC</td>
+      <td>62</td>
+      <td>63</td>
+      <td>2020</td>
+      <td>6</td>
+      <td>0.500000</td>
+      <td>10.333333</td>
+      <td>10.500000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Chaos LC</td>
+      <td>70</td>
+      <td>78</td>
+      <td>2020</td>
+      <td>7</td>
+      <td>0.285714</td>
+      <td>10.000000</td>
+      <td>11.142857</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Waterdogs LC</td>
+      <td>47</td>
+      <td>53</td>
+      <td>2020</td>
+      <td>5</td>
+      <td>0.200000</td>
+      <td>9.400000</td>
+      <td>10.600000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Atlas LC</td>
+      <td>46</td>
+      <td>58</td>
+      <td>2020</td>
+      <td>5</td>
+      <td>0.200000</td>
+      <td>9.200000</td>
+      <td>11.600000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>From the pages where we scrapped the data I noticed that each table has a <code>'Totals'</code> column that pandas grabbed with all the data for each player. 
+This could be helpful to add the totals rows to the teams table so that we can access the win percentage as well as the sum of all other parameters.</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teams_df</span> <span class="o">=</span> <span class="n">players_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">players_df</span><span class="p">[</span><span class="s1">&#39;Player&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Totals&#39;</span><span class="p">]</span>
-<span class="n">teams_df</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-<span class="n">teams_df</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Waterdogs LC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">teams_df</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Player&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">teams_df</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">standings</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># start by selecting all the rows where the player name is &#39;Totals&#39;</span>
+<span class="n">totals_df</span> <span class="o">=</span> <span class="n">players_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">players_df</span><span class="p">[</span><span class="s1">&#39;Player&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Totals&#39;</span><span class="p">]</span>
 
+<span class="c1"># Drop any columns where the entire column is empty (ie the player position column)</span>
+<span class="n">totals_df</span> <span class="o">=</span> <span class="n">totals_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+<span class="c1"># Drop the 2019 waterdogs (they didnt exist)</span>
+<span class="n">totals_df</span> <span class="o">=</span> <span class="n">totals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Waterdogs LC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Drop the playername column (each row is &#39;Totals&#39;)</span>
+<span class="n">totals_df</span> <span class="o">=</span> <span class="n">totals_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Player&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Add the totals data to the df where team and year match</span>
+<span class="n">teams_df</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">totals_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+
+<span class="c1"># don&#39;t need the totals rolls in the players df anymore</span>
 <span class="n">players_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">players_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">players_df</span><span class="p">[</span><span class="s1">&#39;Player&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Totals&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">teams_df</span>
@@ -15312,345 +15331,345 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>GP</th>
-      <th>G</th>
-      <th>A</th>
-      <th>Pts</th>
-      <th>PIM</th>
-      <th>PPG</th>
-      <th>SHG</th>
-      <th>GWG</th>
-      <th>Shts</th>
-      <th>SOG</th>
-      <th>...</th>
-      <th>FO%</th>
       <th>Team</th>
-      <th>Year</th>
-      <th>W</th>
-      <th>L</th>
       <th>GF</th>
       <th>GA</th>
+      <th>Year</th>
+      <th>games_played</th>
       <th>win_pct</th>
       <th>avg_gf</th>
       <th>avg_ga</th>
+      <th>GP</th>
+      <th>G</th>
+      <th>...</th>
+      <th>Shts</th>
+      <th>SOG</th>
+      <th>S%</th>
+      <th>SG%</th>
+      <th>GB</th>
+      <th>TOC</th>
+      <th>CTO</th>
+      <th>FO</th>
+      <th>FW</th>
+      <th>FO%</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>197.0</td>
-      <td>106.0</td>
-      <td>68.0</td>
-      <td>180.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>439.0</td>
-      <td>259.0</td>
-      <td>...</td>
-      <td>46.5</td>
-      <td>Archers LC</td>
-      <td>2019</td>
-      <td>5</td>
-      <td>5</td>
-      <td>105</td>
-      <td>100</td>
-      <td>0.500000</td>
-      <td>10.500000</td>
-      <td>10.000000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>189.0</td>
-      <td>117.0</td>
-      <td>73.0</td>
-      <td>198.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>402.0</td>
-      <td>248.0</td>
-      <td>...</td>
-      <td>61.6</td>
-      <td>Atlas LC</td>
-      <td>2019</td>
-      <td>5</td>
-      <td>5</td>
-      <td>117</td>
-      <td>122</td>
-      <td>0.500000</td>
-      <td>11.700000</td>
-      <td>12.200000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>192.0</td>
-      <td>118.0</td>
-      <td>67.0</td>
-      <td>197.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>382.0</td>
-      <td>234.0</td>
-      <td>...</td>
-      <td>47.3</td>
       <td>Chaos LC</td>
-      <td>2019</td>
-      <td>7</td>
-      <td>3</td>
       <td>118</td>
       <td>126</td>
+      <td>2019</td>
+      <td>10</td>
       <td>0.700000</td>
       <td>11.800000</td>
       <td>12.600000</td>
+      <td>192.0</td>
+      <td>118.0</td>
+      <td>...</td>
+      <td>382.0</td>
+      <td>234.0</td>
+      <td>30.9</td>
+      <td>50.4</td>
+      <td>294.0</td>
+      <td>147.0</td>
+      <td>65.0</td>
+      <td>281.0</td>
+      <td>133.0</td>
+      <td>47.3</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>194.0</td>
-      <td>120.0</td>
-      <td>61.0</td>
-      <td>188.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>415.0</td>
-      <td>246.0</td>
-      <td>...</td>
-      <td>50.5</td>
-      <td>Chrome LC</td>
-      <td>2019</td>
-      <td>2</td>
-      <td>8</td>
-      <td>120</td>
-      <td>125</td>
-      <td>0.200000</td>
-      <td>12.000000</td>
-      <td>12.500000</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>193.0</td>
-      <td>114.0</td>
-      <td>62.0</td>
-      <td>178.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>435.0</td>
-      <td>252.0</td>
-      <td>...</td>
-      <td>41.9</td>
-      <td>Redwoods LC</td>
-      <td>2019</td>
-      <td>5</td>
-      <td>5</td>
-      <td>112</td>
-      <td>106</td>
-      <td>0.500000</td>
-      <td>11.200000</td>
-      <td>10.600000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>186.0</td>
-      <td>113.0</td>
-      <td>71.0</td>
-      <td>196.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>442.0</td>
-      <td>246.0</td>
-      <td>...</td>
-      <td>51.8</td>
+      <th>1</th>
       <td>Whipsnakes LC</td>
-      <td>2019</td>
-      <td>6</td>
-      <td>4</td>
       <td>116</td>
       <td>109</td>
+      <td>2019</td>
+      <td>10</td>
       <td>0.600000</td>
       <td>11.600000</td>
       <td>10.900000</td>
+      <td>186.0</td>
+      <td>113.0</td>
+      <td>...</td>
+      <td>442.0</td>
+      <td>246.0</td>
+      <td>25.6</td>
+      <td>45.9</td>
+      <td>276.0</td>
+      <td>102.0</td>
+      <td>55.0</td>
+      <td>257.0</td>
+      <td>133.0</td>
+      <td>51.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Archers LC</td>
+      <td>105</td>
+      <td>100</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.500000</td>
+      <td>10.500000</td>
+      <td>10.000000</td>
+      <td>197.0</td>
+      <td>106.0</td>
+      <td>...</td>
+      <td>439.0</td>
+      <td>259.0</td>
+      <td>24.1</td>
+      <td>40.9</td>
+      <td>287.0</td>
+      <td>133.0</td>
+      <td>57.0</td>
+      <td>243.0</td>
+      <td>113.0</td>
+      <td>46.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Redwoods LC</td>
+      <td>112</td>
+      <td>106</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.500000</td>
+      <td>11.200000</td>
+      <td>10.600000</td>
+      <td>193.0</td>
+      <td>114.0</td>
+      <td>...</td>
+      <td>435.0</td>
+      <td>252.0</td>
+      <td>26.2</td>
+      <td>45.2</td>
+      <td>273.0</td>
+      <td>130.0</td>
+      <td>67.0</td>
+      <td>253.0</td>
+      <td>106.0</td>
+      <td>41.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Atlas LC</td>
+      <td>117</td>
+      <td>122</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.500000</td>
+      <td>11.700000</td>
+      <td>12.200000</td>
+      <td>189.0</td>
+      <td>117.0</td>
+      <td>...</td>
+      <td>402.0</td>
+      <td>248.0</td>
+      <td>29.1</td>
+      <td>47.2</td>
+      <td>298.0</td>
+      <td>127.0</td>
+      <td>51.0</td>
+      <td>271.0</td>
+      <td>167.0</td>
+      <td>61.6</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Chrome LC</td>
+      <td>120</td>
+      <td>125</td>
+      <td>2019</td>
+      <td>10</td>
+      <td>0.200000</td>
+      <td>12.000000</td>
+      <td>12.500000</td>
+      <td>194.0</td>
+      <td>120.0</td>
+      <td>...</td>
+      <td>415.0</td>
+      <td>246.0</td>
+      <td>28.9</td>
+      <td>48.8</td>
+      <td>352.0</td>
+      <td>143.0</td>
+      <td>70.0</td>
+      <td>281.0</td>
+      <td>142.0</td>
+      <td>50.5</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>132.0</td>
-      <td>63.0</td>
-      <td>35.0</td>
-      <td>99.0</td>
-      <td>8.0</td>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>213.0</td>
-      <td>143.0</td>
-      <td>...</td>
-      <td>48.0</td>
-      <td>Archers LC</td>
-      <td>2020</td>
-      <td>4</td>
-      <td>2</td>
-      <td>64</td>
-      <td>68</td>
-      <td>0.666667</td>
-      <td>10.666667</td>
-      <td>11.333333</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>108.0</td>
-      <td>43.0</td>
-      <td>25.0</td>
-      <td>71.0</td>
-      <td>14.5</td>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>202.0</td>
-      <td>110.0</td>
-      <td>...</td>
-      <td>50.0</td>
-      <td>Atlas LC</td>
-      <td>2020</td>
-      <td>1</td>
-      <td>4</td>
-      <td>46</td>
-      <td>58</td>
-      <td>0.200000</td>
-      <td>9.200000</td>
-      <td>11.600000</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>153.0</td>
-      <td>67.0</td>
-      <td>32.0</td>
-      <td>102.0</td>
-      <td>14.0</td>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>255.0</td>
-      <td>157.0</td>
-      <td>...</td>
-      <td>35.3</td>
-      <td>Chaos LC</td>
-      <td>2020</td>
-      <td>2</td>
-      <td>5</td>
-      <td>70</td>
-      <td>78</td>
-      <td>0.285714</td>
-      <td>10.000000</td>
-      <td>11.142857</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>109.0</td>
-      <td>61.0</td>
-      <td>32.0</td>
-      <td>96.0</td>
-      <td>14.0</td>
-      <td>6.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>190.0</td>
-      <td>109.0</td>
-      <td>...</td>
-      <td>56.7</td>
-      <td>Chrome LC</td>
-      <td>2020</td>
-      <td>3</td>
-      <td>2</td>
-      <td>64</td>
-      <td>64</td>
-      <td>0.600000</td>
-      <td>12.800000</td>
-      <td>12.800000</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>131.0</td>
-      <td>52.0</td>
-      <td>31.0</td>
-      <td>93.0</td>
-      <td>16.0</td>
-      <td>9.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>242.0</td>
-      <td>145.0</td>
-      <td>...</td>
-      <td>36.2</td>
-      <td>Redwoods LC</td>
-      <td>2020</td>
-      <td>3</td>
-      <td>3</td>
-      <td>62</td>
-      <td>63</td>
-      <td>0.500000</td>
-      <td>10.333333</td>
-      <td>10.500000</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>109.0</td>
-      <td>42.0</td>
-      <td>22.0</td>
-      <td>69.0</td>
-      <td>8.5</td>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>186.0</td>
-      <td>117.0</td>
-      <td>...</td>
-      <td>56.3</td>
-      <td>Waterdogs LC</td>
-      <td>2020</td>
-      <td>1</td>
-      <td>4</td>
-      <td>47</td>
-      <td>53</td>
-      <td>0.200000</td>
-      <td>9.400000</td>
-      <td>10.600000</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>132.0</td>
-      <td>78.0</td>
-      <td>45.0</td>
-      <td>127.0</td>
-      <td>9.5</td>
-      <td>5.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>258.0</td>
-      <td>164.0</td>
-      <td>...</td>
-      <td>69.8</td>
       <td>Whipsnakes LC</td>
-      <td>2020</td>
-      <td>6</td>
-      <td>0</td>
       <td>82</td>
       <td>51</td>
+      <td>2020</td>
+      <td>6</td>
       <td>1.000000</td>
       <td>13.666667</td>
       <td>8.500000</td>
+      <td>132.0</td>
+      <td>78.0</td>
+      <td>...</td>
+      <td>258.0</td>
+      <td>164.0</td>
+      <td>30.2</td>
+      <td>47.6</td>
+      <td>223.0</td>
+      <td>84.0</td>
+      <td>33.0</td>
+      <td>149.0</td>
+      <td>104.0</td>
+      <td>69.8</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Archers LC</td>
+      <td>64</td>
+      <td>68</td>
+      <td>2020</td>
+      <td>6</td>
+      <td>0.666667</td>
+      <td>10.666667</td>
+      <td>11.333333</td>
+      <td>132.0</td>
+      <td>63.0</td>
+      <td>...</td>
+      <td>213.0</td>
+      <td>143.0</td>
+      <td>29.6</td>
+      <td>44.1</td>
+      <td>167.0</td>
+      <td>81.0</td>
+      <td>41.0</td>
+      <td>150.0</td>
+      <td>72.0</td>
+      <td>48.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Chrome LC</td>
+      <td>64</td>
+      <td>64</td>
+      <td>2020</td>
+      <td>5</td>
+      <td>0.600000</td>
+      <td>12.800000</td>
+      <td>12.800000</td>
+      <td>109.0</td>
+      <td>61.0</td>
+      <td>...</td>
+      <td>190.0</td>
+      <td>109.0</td>
+      <td>32.1</td>
+      <td>56.0</td>
+      <td>157.0</td>
+      <td>67.0</td>
+      <td>37.0</td>
+      <td>134.0</td>
+      <td>76.0</td>
+      <td>56.7</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Redwoods LC</td>
+      <td>62</td>
+      <td>63</td>
+      <td>2020</td>
+      <td>6</td>
+      <td>0.500000</td>
+      <td>10.333333</td>
+      <td>10.500000</td>
+      <td>131.0</td>
+      <td>52.0</td>
+      <td>...</td>
+      <td>242.0</td>
+      <td>145.0</td>
+      <td>21.5</td>
+      <td>35.9</td>
+      <td>167.0</td>
+      <td>74.0</td>
+      <td>70.0</td>
+      <td>130.0</td>
+      <td>47.0</td>
+      <td>36.2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Chaos LC</td>
+      <td>70</td>
+      <td>78</td>
+      <td>2020</td>
+      <td>7</td>
+      <td>0.285714</td>
+      <td>10.000000</td>
+      <td>11.142857</td>
+      <td>153.0</td>
+      <td>67.0</td>
+      <td>...</td>
+      <td>255.0</td>
+      <td>157.0</td>
+      <td>26.3</td>
+      <td>42.7</td>
+      <td>179.0</td>
+      <td>85.0</td>
+      <td>52.0</td>
+      <td>167.0</td>
+      <td>59.0</td>
+      <td>35.3</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Waterdogs LC</td>
+      <td>47</td>
+      <td>53</td>
+      <td>2020</td>
+      <td>5</td>
+      <td>0.200000</td>
+      <td>9.400000</td>
+      <td>10.600000</td>
+      <td>109.0</td>
+      <td>42.0</td>
+      <td>...</td>
+      <td>186.0</td>
+      <td>117.0</td>
+      <td>22.6</td>
+      <td>35.9</td>
+      <td>157.0</td>
+      <td>60.0</td>
+      <td>51.0</td>
+      <td>112.0</td>
+      <td>63.0</td>
+      <td>56.3</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Atlas LC</td>
+      <td>46</td>
+      <td>58</td>
+      <td>2020</td>
+      <td>5</td>
+      <td>0.200000</td>
+      <td>9.200000</td>
+      <td>11.600000</td>
+      <td>108.0</td>
+      <td>43.0</td>
+      <td>...</td>
+      <td>202.0</td>
+      <td>110.0</td>
+      <td>21.3</td>
+      <td>39.1</td>
+      <td>154.0</td>
+      <td>68.0</td>
+      <td>43.0</td>
+      <td>116.0</td>
+      <td>58.0</td>
+      <td>50.0</td>
     </tr>
   </tbody>
 </table>
-<p>13 rows × 27 columns</p>
+<p>13 rows × 26 columns</p>
 </div>
 </div>
 
@@ -15663,42 +15682,37 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Normally in the data science progression this is where we would tidy up our data. We are lucky enough to have the data already tidy enough for our use.</p>
-<p>There is some missing data for some seasons, but the Nan's in the dataframe will be okay in further analysis.</p>
-<p>Optionally we could've replaced np.nan with pd.na to clarrift that the data is missing and not "not a number" however for this excersise we know that np.nan represents a missing value.</p>
+<p>There is some missing data in our dataframes. There are certain statistics that were not recorded during the first season of play such as penalties in minutes. 
+The Nan's in the dataframe will be okay in further analysis since we know they mean that the data is missing.</p>
+<p>Optionally we could've replaced np.nan with pd.na to clarrify that the data is missing and not "not a number", however, for this excersise we know that np.nan represents a missing value.</p>
+<p>We wont try to fill in missing data because it is most likely missing soley beacuse nobody thought to record it at the time, not due to a factor in the data itself. Additionally we do not need a data point for every row of every column to perform our analysis.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="What-is-more-relevant-to-wins?-Goals-for-or-goals-against">What is more relevant to wins? Goals for or goals against<a class="anchor-link" href="#What-is-more-relevant-to-wins?-Goals-for-or-goals-against">&#182;</a></h2>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<h2 id="Inital-Exploration:-Are-goals-for-or-goals-against-more-relevant-to-wins?">Inital Exploration: Are goals for or goals against more relevant to wins?<a class="anchor-link" href="#Inital-Exploration:-Are-goals-for-or-goals-against-more-relevant-to-wins?">&#182;</a></h2><p>To start let's do some simple analysis and determine if scoring goals or stopping goals is more important to winning games. 
+For this exploration lets first graph the data.</p>
+<p>Ideally when graphing features of a model we create an axis for each feature. Due to the minimal amount of data avaliable I didn't think the 3D graph was very easy to interpret so I also included a 2D graph.</p>
+<p>There is not a lot of points to show a clear linear relationship, but we can assume one.</p>
 
-     </div>
 </div>
-</div>
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standings</span><span class="o">.</span><span class="n">avg_gf</span><span class="p">,</span> <span class="n">standings</span><span class="o">.</span><span class="n">win_pct</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;GF&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standings</span><span class="o">.</span><span class="n">avg_ga</span><span class="p">,</span> <span class="n">standings</span><span class="o">.</span><span class="n">win_pct</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;GA&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2D plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">avg_gf</span><span class="p">,</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">win_pct</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;GF&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">avg_ga</span><span class="p">,</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">win_pct</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;GA&quot;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Goals for and goals against vs games won&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Avg. Goals&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Win Percentage&quot;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -15738,12 +15752,16 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span> <span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standings</span><span class="o">.</span><span class="n">avg_gf</span><span class="p">,</span> <span class="n">standings</span><span class="o">.</span><span class="n">avg_ga</span><span class="p">,</span> <span class="n">standings</span><span class="o">.</span><span class="n">win_pct</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3D plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span> <span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">teams_df</span><span class="o">.</span><span class="n">avg_gf</span><span class="p">,</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">avg_ga</span><span class="p">,</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">win_pct</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Goals for and goals against vs games won&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Avg. Goals For&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Avg. Goals Against&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Win Percentage&quot;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
@@ -15780,15 +15798,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Since in the two seasons there were a different number of games played I decided to normalize the number of goals scored and use win percentage instead of number of wins.</p>
-<p>Ideally when graphing 2 features of a model we use an axis for each feature. Due to the minimal amount of data avaliable I didn't think the 3D graph was very easy to interpret so I also included a 2D graph.</p>
-<p>There is not a lot of points to show a clear linear relationship, but we can assume one.</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Now lets perform a linear regression with goals for and goals against. I'm going to do one for unnormalized data first then normalized data after to compare.</p>
+<p>Now lets perform a linear regression for number of wins from goals for and goals against</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15797,10 +15807,14 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">standings</span><span class="p">[[</span><span class="s1">&#39;avg_gf&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_ga&#39;</span><span class="p">]]</span> <span class="c1"># drop everything except goals for and against.</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">standings</span><span class="o">.</span><span class="n">win_pct</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[[</span><span class="s1">&#39;avg_gf&#39;</span><span class="p">,</span> <span class="s1">&#39;avg_ga&#39;</span><span class="p">]]</span> <span class="c1"># drop everything except goals for and against.</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">win_pct</span>
+
 <span class="n">num_wins_regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">regr_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Win Percentage = </span><span class="si">{</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> * avg. goals for + </span><span class="si">{</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> * avg. goals against&quot;</span>
+
+<span class="n">regr_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Win Percentage = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">DECIMALS_PRINT</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> \
+            <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; + </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">DECIMALS_PRINT</span><span class="p">)</span><span class="si">}</span><span class="s2"> * avg. goals for&quot;</span> \
+            <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; + </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">DECIMALS_PRINT</span><span class="p">)</span><span class="si">}</span><span class="s2"> * avg. goals against&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">regr_str</span><span class="p">)</span>
 </pre></div>
 
@@ -15821,7 +15835,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Win Percentage = -0.1593287599003394 + 0.12906449148107754 * avg. goals for + -0.07002859726332156 * avg. goals against
+<pre>Win Percentage = -0.16 + 0.13 * avg. goals for + -0.07 * avg. goals against
 </pre>
 </div>
 </div>
@@ -15833,21 +15847,16 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>By this analysis scoring goals is more important than stopping goals. Each goal scored will have a greater impact on the number of wins than each goal scoared against.</p>
+<p>By this analysis scoring goals is more important than stopping goals. Each goal scored will have a greater impact on the number of wins than each goal scored against. This is not a definite fact, but a conclusion from our data.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Since we believe scoring goals to be more important than stopping goals, lets continue our analysis to determine what is the most important statistic for scoring goals. For this analysis we'll compare the columns in the scoring table.</p>
-<p>We won't use all of the columns in the scoring dataframe because there are certain things we cannot change. For example, we won't use the position column because we can't have 10 midfielders on the feild at once even if they're the most likely to be scoring goals.</p>
-<p>I am not comparing players at the current moment so I will use the total rows for each team and season from the table.</p>
-<p>I will also ignore columns that are dependent of goals. For example assits and faceoffs happen whenever there is a goal so there is a strong linear relationship.</p>
+<p>Since we believe scoring goals to be more important than stopping goals, lets continue our analysis to determine what is the most important statistic for scoring goals.</p>
+<p>For this analysis we'll use more of the columns in the table.
+We won't use all of the columns in the scoring dataframe because there are certain things we cannot change. For example, we won't use the position column because we can't have 10 midfielders on the feild at once even if they're the most likely to be scoring goals.</p>
+<p>I will also ignore columns that are dependent on goals. Assists, power play goals and short hand goals do not cause goals but are a result of goals. Further analysis could compare the effect of assists on shooting percentage.</p>
 <p>A list of the columns being used are as follows:</p>
 
 </div>
@@ -15858,34 +15867,41 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">shots_regr_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PIM&#39;</span><span class="p">,</span> <span class="s1">&#39;Shts&#39;</span><span class="p">,</span> <span class="s1">&#39;SOG&#39;</span><span class="p">,</span> <span class="s1">&#39;S%&#39;</span><span class="p">,</span> <span class="s1">&#39;SG%&#39;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">,</span> <span class="s1">&#39;TOC&#39;</span><span class="p">,</span> <span class="s1">&#39;CTO&#39;</span><span class="p">,</span> <span class="s1">&#39;FO%&#39;</span><span class="p">]</span>
+
+<span class="c1"># create a dictionary of empty lists to add data to</span>
 <span class="n">shots_regr_cols_data</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">shots_regr_cols</span><span class="p">:</span> 
     <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="p">([],[])</span>
+    
 <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">SEASONS</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">team_name</span> <span class="ow">in</span> <span class="n">teams_dic</span><span class="p">:</span>
         <span class="n">row</span> <span class="o">=</span> <span class="n">teams_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">team_name</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># loc returns a list, there should only be 1 value inside for each team and year. </span>
+        <span class="c1"># There is at least 1 team year that doesn&#39;t have data (waterdogs 2019)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">row</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">shots_regr_cols</span><span class="p">:</span> 
                 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">])):</span>
-                    <span class="n">standings_row</span> <span class="o">=</span> <span class="n">standings</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">standings</span><span class="p">[</span><span class="s1">&#39;Team&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">team_name</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">standings</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">]</span>
-                    <span class="n">games_played</span> <span class="o">=</span> <span class="n">standings_row</span><span class="o">.</span><span class="n">W</span> <span class="o">+</span> <span class="n">standings_row</span><span class="o">.</span><span class="n">L</span>
-                    <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
-                    <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">games_played</span><span class="p">)</span>
+                    <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="c1"># x data</span>
+                    <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;G&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;games_played&#39;</span><span class="p">])</span> <span class="c1"># y data</span>
 
-            
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-                
+<span class="c1"># plot graphs and linear regressions       </span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>            
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">shots_regr_cols</span><span class="p">:</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
     <span class="n">x</span> <span class="o">=</span> <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">shots_regr_cols_data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    
     <span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">column_labels</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="si">}</span><span class="s1"> vs goals&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">column_labels</span><span class="p">[</span><span class="n">c</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Avg. Goals Per Game&quot;</span><span class="p">)</span>
+    
     <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
 </pre></div>
 
@@ -16057,7 +16073,9 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="More-complicated-linear-regression-with-more-datapoints">More complicated linear regression with more datapoints<a class="anchor-link" href="#More-complicated-linear-regression-with-more-datapoints">&#182;</a></h1>
+<h2 id="More-complicated-linear-regression">More complicated linear regression<a class="anchor-link" href="#More-complicated-linear-regression">&#182;</a></h2><p>Although looking at what factors lead to scoring more goals what we really want to do is figure out what factors lead to a higher win percentage.
+To do this we'll create a linear regression where the features are all the columns used above in our features vs avg goals regressions.</p>
+
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -16069,7 +16087,8 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 <span class="n">y</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span>
 
 <span class="n">num_wins_regr</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+
+<span class="c1"># print regression in a readable format</span>
 <span class="n">regr_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Win Percentage = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">DECIMALS_PRINT</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">)):</span>
     <span class="n">regr_str</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; + (</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">num_wins_regr</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">DECIMALS_PRINT</span><span class="p">)</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">column_labels</span><span class="p">[</span><span class="n">shots_regr_cols</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="si">}</span><span class="s2">)&quot;</span>
@@ -16093,9 +16112,7 @@ Luckily pandas has a function that we can use for scrapping an html table</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[ 0.08229208  0.05245338 -0.07996145  0.54488846 -0.30317444 -0.01257543
-  0.02320928  0.01531158  0.04875531]
-Win Percentage = -5.26 + (0.08 * Penalties in minutes) + (0.05 * shots) + (-0.08 * Shots on goal) + (0.54 * Shooting Percentage) + (-0.3 * Shots on goal percentage) + (-0.01 * Ground Balls) + (0.02 * Turn overs committed) + (0.02 * Caused Turn overs) + (0.05 * Face off Percentage)
+<pre>Win Percentage = -5.26 + (0.08 * Penalties in minutes) + (0.05 * shots) + (-0.08 * Shots on goal) + (0.54 * Shooting Percentage) + (-0.3 * Shots on goal percentage) + (-0.01 * Ground Balls) + (0.02 * Turn overs committed) + (0.02 * Caused Turn overs) + (0.05 * Face off Percentage)
 </pre>
 </div>
 </div>
@@ -16107,105 +16124,74 @@ Win Percentage = -5.26 + (0.08 * Penalties in minutes) + (0.05 * shots) + (-0.08
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The regression is hard to interpret since there is not a standard range. For example, 1 penalty minute has a bigger impact on win percentage than 1 shot. According to the model shots on goal hurt win percentage.</p>
+<p>The regression is hard to interpret since there is not a standard range. For example, 1 penalty minute has a bigger impact on win percentage than 1 shot.</p>
+<p>There are some unexpected results in our model. According to the model shots on goal hurt win percentage, but turn overs committed increases winning percentage. 
+These numbers seem counterintuitive. Especially shots on goal since you can't score a goal without a shot on goal and you can't win games without goals.
+There could of course be a logical explanation for these oddities, but I would be curious to see if they persist when more data becomes avaliable.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Should do a residuals graph. What to group by?</p>
+<h3 id="Residual-graph">Residual graph<a class="anchor-link" href="#Residual-graph">&#182;</a></h3><p>For our final analysis we'll plot the residuals of the model. We could group residuals by any variable, but I chose year simply because there are the most overlapping data points. Team or another statistic would leave only 1 or 2 datapoints per group.</p>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;win_pct&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_wins_regr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">teams_df</span><span class="p">[</span><span class="n">shots_regr_cols</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">([</span><span class="n">teams_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">teams_df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">year</span><span class="p">][</span><span class="s1">&#39;residual&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">SEASONS</span><span class="p">],</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Win Percentage Residuals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">SEASONS</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>While there is very little data the professional lacrosse league, we were able to make predictions given the avaliable data.</p>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>While we were able to make conclusions and predictions about what factors lead to teams winning more games I don't believe that any are statistically significant due to the lack of data.
+The graphs of the residuals do not show a normal curve that is expected for a good regression model.
+Additionally, there were some oddities in the regression model that are most easily explained by a lack of data to train the model.</p>
+<p>With this conclusion, I do not claim that the model is wrong but that it doesn't have enough data to prove that it is correct.</p>
+<p>After the season this summer there will be more data on the league and we can improve our models. Since the scrapping we did is in loops and not by hand adding another season and an 8th team to our model should be as simple as adding them to the list of constants at the beginning.</p>
+<p>In future work, I think it would be interesting to compare players and see if there is a data science method to determine which players help win the most games (something similar to Moneyball but for lacrosse). Additionally looking into different types of plays could be beneficial. Example analysis could compare assisted vs unassisted goals, aggressive vs conservative defense, the use of <a href="https://www.rookieroad.com/lacrosse/what-is-the-fogo-lacrosse-player-position/">FOGO</a>'s, etc.</p>
+<p>For more information on the Premier Lacrosse League, you can go to <a href="https://stats.premierlacrosseleague.com">https://stats.premierlacrosseleague.com</a> or their main website <a href="https://premierlacrosseleague.com">https://premierlacrosseleague.com</a>. Again all the data I used was scraped from <a href="https://www.statscrew.com">https://www.statscrew.com</a> if you would like to use their data for your own analysis.</p>
+<p>Thank you for following along with my analysis of how to win premier lacrosse league games. Whether or not you like lacrosse, I hope the idea of the upcoming season gets you excited thinking about all the additional data that will be available.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
